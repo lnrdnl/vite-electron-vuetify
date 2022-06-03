@@ -4,6 +4,7 @@ import {chrome} from '../../.electron-vendors.cache.json';
 import {join} from 'path';
 import {builtinModules} from 'module';
 import vue from '@vitejs/plugin-vue';
+import vuetify from 'vite-plugin-vuetify';
 
 const PACKAGE_ROOT = __dirname;
 
@@ -19,7 +20,12 @@ const config = {
       '/@/': join(PACKAGE_ROOT, 'src') + '/',
     },
   },
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    vuetify({
+      autoImport: true,
+    }),
+  ],
   base: '',
   server: {
     fs: {
